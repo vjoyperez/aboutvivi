@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="vivi perez, art director"
+    />
+    <title>vivi perez, art director</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <article class="mac-window" aria-labelledby="record-title">
+        <header class="title-bar">
+          <div class="traffic-lights">
+            <span class="traffic-light traffic-light--close" aria-hidden="true"></span>
+            <button
+              class="traffic-light traffic-light--minimize"
+              type="button"
+              aria-label="Minimize creative license record"
+            ></button>
+            <span class="expand-control">
+              <button
+                class="traffic-light traffic-light--expand"
+                type="button"
+                aria-label="Expand creative license record"
+                aria-expanded="false"
+              ></button>
+              <span class="expand-cue-label" aria-hidden="true">Expand me</span>
+            </span>
+          </div>
+          <p class="window-title">vivi perez, art director</p>
+          <span class="title-bar-spacer" aria-hidden="true"></span>
+        </header>
+
+        <div class="record-scroll" tabindex="0">
+          <section
+            class="intro-screen"
+            aria-label="It's my world, and you're scrolling in it."
+          >
+            <p class="intro-copy" aria-hidden="true"></p>
+          </section>
+          <div class="record-paper">
+            <header class="record-header">
+              <h1 class="sr-only" id="record-title">Department of Creative Affairs</h1>
+              <img
+                class="record-logo"
+                src="assets/dca-logo.png"
+                alt=""
+              />
+            </header>
+
+            <dl class="record-meta" aria-label="Record metadata">
+              <div>
+                <dt>License no.</dt>
+                <dd>2026AD-VP</dd>
+              </div>
+              <div>
+                <dt>Classification</dt>
+                <dd>Public</dd>
+              </div>
+              <div>
+                <dt>Status</dt>
+                <dd class="status-value" aria-live="polite">
+                  <span class="status-dot" aria-hidden="true"></span><span class="status-text">Pending</span>
+                </dd>
+              </div>
+            </dl>
+
+            <figure
+              class="license-card"
+              role="button"
+              tabindex="0"
+              aria-label="Activate California Creative License"
+            >
+              <span class="license-hint license-hint--desktop" aria-hidden="true">Click to activate</span>
+              <span class="license-hint license-hint--mobile" aria-hidden="true">Tap to activate</span>
+              <img
+                src="assets/id-card.png"
+                alt="California Creative License for Victoria Perez, art director"
+              />
+              <figcaption>Exhibit A · California Creative License</figcaption>
+            </figure>
+
+            <section class="record-section" aria-labelledby="public-records-title">
+              <div class="section-heading">
+                <p>Exhibit B</p>
+                <h2 id="public-records-title">Public Records</h2>
+              </div>
+              <div class="record-links">
+                <a
+                  class="record-button record-button--primary"
+                  href="https://drive.google.com/file/d/1ihs2tSUF2L1OtNCYxITqRJYOnMXunHs1/view?usp=sharing"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>Download Resume</span><span aria-hidden="true">↗</span>
+                </a>
+                <a
+                  class="record-button record-button--linkedin"
+                  href="https://www.linkedin.com/in/victoriajperez/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <span>LinkedIn</span><span aria-hidden="true">↗</span>
+                </a>
+              </div>
+            </section>
+
+            <section class="record-section statement-section" aria-labelledby="statement-title">
+              <div class="section-heading">
+                <p>Exhibit C</p>
+                <h2 id="statement-title">Personal Statement</h2>
+              </div>
+              <div class="statement-copy">
+                <p>
+                  After college, I spent 1.5+ years at a CPG agency as an Associate
+                  Account Executive. By day, my left brain was activated by spreadsheets,
+                  keyword bids and KPIs. By night, my right brain was immersed in artboards,
+                  briefs and brainstorming sessions in downtown SF.
+                </p>
+                <p>
+                  Balancing portfolio school with a full-time agency job taught me something
+                  I'll carry for the rest of my career: <strong class="protected-phrase">pressure certainly creates diamonds.</strong>
+                </p>
+              </div>
+            </section>
+
+            <section class="accordion-record" data-accordion>
+              <h2 class="accordion-heading">
+                <button
+                  class="accordion-trigger"
+                  id="accordion-trigger-d"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="accordion-panel-d"
+                >
+                  <span class="accordion-marker" aria-hidden="true">▸</span>
+                  <span class="accordion-identity">
+                    <span class="accordion-label">Exhibit D</span>
+                    <span class="accordion-title">Observed Activities</span>
+                  </span>
+                </button>
+              </h2>
+              <div
+                class="accordion-panel"
+                id="accordion-panel-d"
+                role="region"
+                aria-labelledby="accordion-trigger-d"
+                aria-hidden="true"
+              >
+                <div class="accordion-panel-inner">
+                  <div class="accordion-content">
+                    <div class="statement-copy activity-copy">
+                      <p>
+                        Off the clock, I'm always learning something. Sometimes, practicing DJ-ing
+                        on my Pioneer DDJ-SB3 and curating my Spotify playlists by subgenre. Other
+                        times, getting lost down obscure internet rabbit holes and testing
+                        <span class="protected-phrase">new gen-AI models.</span>
+                      </p>
+                    </div>
+                    <div class="activity-grid">
+                      <figure class="evidence-card evidence-card--controller">
+                        <div class="evidence-frame">
+                          <img src="assets/dj-controller.png" alt="Pioneer DJ controller" />
+                        </div>
+                        <figcaption class="evidence-label">Item D-01</figcaption>
+                      </figure>
+                      <figure class="evidence-card evidence-card--spotify">
+                        <div class="evidence-frame">
+                          <img
+                            src="assets/spotify-widget.png"
+                            alt="A selection of Victoria's Spotify playlists by music subgenre"
+                          />
+                        </div>
+                        <figcaption class="evidence-label">Item D-02</figcaption>
+                      </figure>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="accordion-record" data-accordion>
+              <h2 class="accordion-heading">
+                <button
+                  class="accordion-trigger"
+                  id="accordion-trigger-e"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="accordion-panel-e"
+                >
+                  <span class="accordion-marker" aria-hidden="true">▸</span>
+                  <span class="accordion-identity">
+                    <span class="accordion-label">Exhibit E</span>
+                    <span class="accordion-title">Recommended Rabbit Hole</span>
+                  </span>
+                </button>
+              </h2>
+              <div
+                class="accordion-panel"
+                id="accordion-panel-e"
+                role="region"
+                aria-labelledby="accordion-trigger-e"
+                aria-hidden="true"
+              >
+                <div class="accordion-panel-inner">
+                  <div class="accordion-content accordion-content--rabbit">
+                    <a
+                      class="rabbit-link"
+                      href="https://everynoise.com/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <span>everynoise.com</span><span aria-hidden="true">↗</span>
+                    </a>
+                    <dl class="rabbit-meta">
+                      <div><dt>Risk level</dt><dd>High</dd></div>
+                      <div><dt>Estimated time loss</dt><dd>Unknown</dd></div>
+                    </dl>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <section class="accordion-record" data-accordion>
+              <h2 class="accordion-heading">
+                <button
+                  class="accordion-trigger"
+                  id="accordion-trigger-f"
+                  type="button"
+                  aria-expanded="false"
+                  aria-controls="accordion-panel-f"
+                >
+                  <span class="accordion-marker" aria-hidden="true">▸</span>
+                  <span class="accordion-identity">
+                    <span class="accordion-label">Exhibit F</span>
+                    <span class="accordion-title">Active Investigations</span>
+                  </span>
+                </button>
+              </h2>
+              <div
+                class="accordion-panel"
+                id="accordion-panel-f"
+                role="region"
+                aria-labelledby="accordion-trigger-f"
+                aria-hidden="true"
+              >
+                <div class="accordion-panel-inner">
+                  <div class="accordion-content">
+                    <ol class="case-list">
+                      <li><span>Case 01</span>Experimenting with creative tech</li>
+                      <li><span>Case 02</span>DJ-ing &amp; discovering new music</li>
+                      <li><span>Case 03</span>Generative AI workflows</li>
+                    </ol>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            <footer class="record-footer">
+              <p>End of public record</p>
+              <span aria-hidden="true">vperez.world</span>
+            </footer>
+          </div>
+        </div>
+        <div class="scroll-progress" aria-hidden="true"><span></span></div>
+      </article>
+    </main>
+  </body>
+</html>
