@@ -96,6 +96,11 @@ const ARTIFACTS = [
   },
 ];
 
+const embedMode = new URLSearchParams(window.location.search).get('embed');
+if (embedMode === 'readymag') {
+  document.documentElement.dataset.embed = 'readymag';
+}
+
 const DEFAULT_CASCADE_ID = 'creative-license';
 
 // Defensive cleanup for older builds that included a white placeholder preview modal.
