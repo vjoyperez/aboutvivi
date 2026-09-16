@@ -1432,7 +1432,7 @@ h1 {
   }
 
   .mac-window.is-expanded {
-    height: 650px;
+    height: 560px;
     min-height: 0;
   }
 
@@ -2603,6 +2603,7 @@ h1 {
   .mac-window.is-expanded .record-scroll { overflow-y: hidden; }
 
   .artifact-stage {
+    --mobile-expanded-lift: 0px;
     width: min(100%, 420px);
     height: min(620px, calc(100% - 34px));
     min-height: 0;
@@ -2613,7 +2614,7 @@ h1 {
     transform:
       translate3d(
         calc(-50% + var(--mobile-expanded-x) + (var(--neighbor-push) * 0.3)),
-        calc(-50% + var(--mobile-expanded-y)),
+        calc(-50% + var(--mobile-expanded-y) + var(--mobile-expanded-lift)),
         0
       )
       rotate(var(--mobile-expanded-rotate))
@@ -2673,7 +2674,7 @@ h1 {
     transform:
       translate3d(
         calc(-50% + (var(--mobile-expanded-x) * 0.86) + (var(--neighbor-push) * 0.36)),
-        calc(-50% + (var(--mobile-expanded-y) * 0.9)),
+        calc(-50% + (var(--mobile-expanded-y) * 0.9) + var(--mobile-expanded-lift)),
         0
       )
       rotate(var(--mobile-expanded-rotate))
@@ -2951,7 +2952,7 @@ h1 {
   }
 
   .mac-window.is-expanded {
-    height: 650px;
+    height: 560px;
   }
 
   .title-bar {
