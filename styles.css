@@ -1432,7 +1432,7 @@ h1 {
   }
 
   .mac-window.is-expanded {
-    height: min(720px, calc(100dvh - 48px));
+    height: 650px;
     min-height: 0;
   }
 
@@ -2951,7 +2951,7 @@ h1 {
   }
 
   .mac-window.is-expanded {
-    height: min(740px, calc(100dvh - 16px));
+    height: 650px;
   }
 
   .title-bar {
