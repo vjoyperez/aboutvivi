@@ -2604,7 +2604,7 @@ h1 {
 
   .artifact-stage {
     width: min(100%, 420px);
-    height: min(540px, calc(100% - 64px));
+    height: min(620px, calc(100% - 34px));
     min-height: 0;
   }
 
@@ -2951,7 +2951,7 @@ h1 {
   }
 
   .mac-window.is-expanded {
-    height: min(680px, calc(100dvh - 32px));
+    height: min(740px, calc(100dvh - 16px));
   }
 
   .title-bar {
