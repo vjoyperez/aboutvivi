@@ -97,6 +97,10 @@ const ARTIFACTS = [
 ];
 
 const embedMode = new URLSearchParams(window.location.search).get('embed');
+const layoutEditMode = (
+  new URLSearchParams(window.location.search).get('edit') === 'layout' ||
+  window.location.pathname.endsWith('/layout-editor.html')
+);
 if (embedMode === 'readymag') {
   document.documentElement.dataset.embed = 'readymag';
 }
@@ -206,6 +210,93 @@ const MOBILE_CASCADE_SLOTS = [
   { x: -74, y: 152, rotation: 5, scale: 0.66, zIndex: 48 },
 ];
 
+const MOBILE_LAYOUT_OVERRIDES = {
+  about: {
+    order: ['about', 'resume', 'linkedin', 'email', 'dj-board', 'creative-license', 'everynoise'],
+    slots: [
+      { x: 6, y: -140, rotation: -2, scale: 0.68, zIndex: 70 },
+      { x: 84, y: 15, rotation: 13, scale: 0.38, zIndex: 58 },
+      { x: 121, y: 158, rotation: 6, scale: 0.66, zIndex: 56 },
+      { x: -7, y: 116, rotation: -7, scale: 0.7, zIndex: 54 },
+      { x: -95, y: 147, rotation: 4, scale: 0.4, zIndex: 52 },
+      { x: -76, y: 16, rotation: -6, scale: 0.38, zIndex: 50 },
+      { x: 34, y: 164, rotation: -1, scale: 0.58, zIndex: 48 },
+    ],
+  },
+  'creative-license': {
+    order: ['creative-license', 'about', 'resume', 'linkedin', 'email', 'dj-board', 'everynoise'],
+    slots: [
+      { x: 1, y: -133, rotation: 0, scale: 0.8, zIndex: 70 },
+      { x: 103, y: 7, rotation: 7, scale: 0.34, zIndex: 58 },
+      { x: -97, y: 7, rotation: -7, scale: 0.42, zIndex: 56 },
+      { x: 6, y: 32, rotation: -5, scale: 0.7, zIndex: 54 },
+      { x: -107, y: 162, rotation: -6, scale: 0.7, zIndex: 52 },
+      { x: 96, y: 146, rotation: 4, scale: 0.46, zIndex: 50 },
+      { x: -16, y: 128, rotation: -9, scale: 0.7, zIndex: 48 },
+    ],
+  },
+  resume: {
+    order: ['resume', 'linkedin', 'email', 'dj-board', 'creative-license', 'about', 'everynoise'],
+    slots: [
+      { x: -2, y: -141, rotation: -2, scale: 0.68, zIndex: 70 },
+      { x: -120, y: 16, rotation: 7, scale: 0.66, zIndex: 58 },
+      { x: 13, y: 68, rotation: -7, scale: 0.74, zIndex: 56 },
+      { x: 80, y: 138, rotation: 1, scale: 0.48, zIndex: 54 },
+      { x: -94, y: 72, rotation: -6, scale: 0.32, zIndex: 52 },
+      { x: 109, y: 3, rotation: 8, scale: 0.32, zIndex: 50 },
+      { x: -31, y: 165, rotation: 5, scale: 0.62, zIndex: 48 },
+    ],
+  },
+  'dj-board': {
+    order: ['dj-board', 'creative-license', 'about', 'resume', 'linkedin', 'email', 'everynoise'],
+    slots: [
+      { x: 7, y: -102, rotation: 0, scale: 0.98, zIndex: 70 },
+      { x: 85, y: 11, rotation: 7, scale: 0.34, zIndex: 58 },
+      { x: 97, y: 107, rotation: -7, scale: 0.3, zIndex: 56 },
+      { x: -93, y: -16, rotation: -10, scale: 0.32, zIndex: 54 },
+      { x: -15, y: 83, rotation: -6, scale: 0.66, zIndex: 52 },
+      { x: -113, y: 144, rotation: -4, scale: 0.7, zIndex: 50 },
+      { x: -24, y: 156, rotation: 5, scale: 0.7, zIndex: 48 },
+    ],
+  },
+  email: {
+    order: ['email', 'dj-board', 'creative-license', 'about', 'resume', 'linkedin', 'everynoise'],
+    slots: [
+      { x: 4, y: -122, rotation: 0, scale: 1.2, zIndex: 70 },
+      { x: 103, y: 96, rotation: -8, scale: 0.42, zIndex: 58 },
+      { x: -94, y: -58, rotation: -7, scale: 0.3, zIndex: 56 },
+      { x: -99, y: 51, rotation: -11, scale: 0.32, zIndex: 54 },
+      { x: 109, y: -50, rotation: 5, scale: 0.36, zIndex: 52 },
+      { x: 2, y: 37, rotation: -4, scale: 0.86, zIndex: 50 },
+      { x: -6, y: 149, rotation: 5, scale: 0.66, zIndex: 48 },
+    ],
+  },
+  linkedin: {
+    order: ['linkedin', 'email', 'dj-board', 'creative-license', 'about', 'resume', 'everynoise'],
+    slots: [
+      { x: 3, y: -141, rotation: 0, scale: 1.12, zIndex: 70 },
+      { x: -80, y: -55, rotation: -10, scale: 0.86, zIndex: 58 },
+      { x: 16, y: 32, rotation: -7, scale: 0.46, zIndex: 56 },
+      { x: 83, y: -60, rotation: 6, scale: 0.36, zIndex: 54 },
+      { x: -106, y: 15, rotation: 7, scale: 0.32, zIndex: 52 },
+      { x: 108, y: 92, rotation: -4, scale: 0.34, zIndex: 50 },
+      { x: -36, y: 137, rotation: 5, scale: 0.78, zIndex: 48 },
+    ],
+  },
+  everynoise: {
+    order: ['everynoise', 'creative-license', 'about', 'resume', 'linkedin', 'email', 'dj-board'],
+    slots: [
+      { x: 4, y: -114, rotation: 0, scale: 1.16, zIndex: 70 },
+      { x: 74, y: 122, rotation: 7, scale: 0.34, zIndex: 58 },
+      { x: -101, y: -76, rotation: -7, scale: 0.26, zIndex: 56 },
+      { x: -73, y: 104, rotation: -7, scale: 0.24, zIndex: 54 },
+      { x: -118, y: 68, rotation: -6, scale: 0.7, zIndex: 52 },
+      { x: -4, y: 62, rotation: 7, scale: 0.86, zIndex: 50 },
+      { x: 93, y: -6, rotation: 5, scale: 0.54, zIndex: 48 },
+    ],
+  },
+};
+
 const GALLERY_TIMING = {
   collapseDelay: 160,
   parallax: 10,
@@ -288,6 +379,7 @@ let navigationIndex = 0;
 let suppressHistory = false;
 const navigationHistory = [DEFAULT_CASCADE_ID];
 const reactiveState = new Map();
+let layoutEditor = null;
 
 function startIntroTyping() {
   const currentRun = ++typingRun;
@@ -531,6 +623,12 @@ function getFrontArtifactId() {
 }
 
 function getMobileSlotForArtifact(artifactId, slotIndex) {
+  const override = MOBILE_LAYOUT_OVERRIDES[getFrontArtifactId()];
+  const overrideIndex = override?.order.indexOf(artifactId) ?? -1;
+  if (overrideIndex === slotIndex && override.slots[overrideIndex]) {
+    return override.slots[overrideIndex];
+  }
+
   const slot = MOBILE_CASCADE_SLOTS[slotIndex];
   const artifact = getArtifactById(artifactId);
   if (!slot || !artifact) return slot;
@@ -572,6 +670,8 @@ function applyCascadeOrder() {
       item.style.setProperty('--mobile-expanded-z', `${mobileSlot.zIndex}`);
     }
   });
+
+  layoutEditor?.applyActiveOverrides();
 }
 
 function getCurrentCascadeSlots() {
@@ -607,6 +707,266 @@ function getLayoutCode() {
 
 function logCascadeSlots() {
   console.info(`Updated layout:\n${getLayoutCode()}`);
+}
+
+function getCurrentMobileCascadeSlots() {
+  return cascadeOrder.map((artifactId) => {
+    const item = stage.querySelector(`[data-artifact-id="${artifactId}"]`);
+    const x = Number.parseFloat(item?.style.getPropertyValue('--mobile-expanded-x')) || 0;
+    const y = Number.parseFloat(item?.style.getPropertyValue('--mobile-expanded-y')) || 0;
+    const rotation = Number.parseFloat(item?.style.getPropertyValue('--mobile-expanded-rotate')) || 0;
+    const scale = Number.parseFloat(item?.style.getPropertyValue('--mobile-expanded-scale')) || 1;
+    const zIndex = Number.parseInt(item?.style.getPropertyValue('--mobile-expanded-z'), 10) || 0;
+
+    return { x: Math.round(x), y: Math.round(y), rotation, scale: Number(scale.toFixed(3)), zIndex };
+  });
+}
+
+function createMobileLayoutEditor() {
+  const panel = document.createElement('section');
+  panel.className = 'layout-editor-panel';
+  panel.setAttribute('aria-label', 'Mobile layout editor');
+  panel.innerHTML = `
+    <div class="layout-editor-panel__header">
+      <strong>mobile layout editor</strong>
+      <span>temporary</span>
+    </div>
+    <label>
+      dominant state
+      <select data-layout-state></select>
+    </label>
+    <p class="layout-editor-panel__selected" data-layout-selected>tap an icon to select it</p>
+    <div class="layout-editor-panel__controls" aria-label="Scale selected icon">
+      <button type="button" data-layout-scale="-0.04">scale -</button>
+      <button type="button" data-layout-scale="0.04">scale +</button>
+    </div>
+    <div class="layout-editor-panel__controls" aria-label="Rotate selected icon">
+      <button type="button" data-layout-rotate="-1">rotate -</button>
+      <button type="button" data-layout-rotate="1">rotate +</button>
+    </div>
+    <div class="layout-editor-panel__controls">
+      <button type="button" data-layout-reset>reset state</button>
+      <button type="button" data-layout-copy>copy mobile layout</button>
+    </div>
+    <textarea data-layout-output readonly spellcheck="false" aria-label="Generated mobile layout values"></textarea>
+    <p class="layout-editor-panel__hint">Open on mobile/narrow preview. Drag icons in the black frame; scale/rotate the selected icon here.</p>
+  `;
+  document.body.append(panel);
+
+  const stateSelect = panel.querySelector('[data-layout-state]');
+  Object.keys(CASCADE_LAYOUTS).forEach((artifactId) => {
+    const artifact = getArtifactById(artifactId);
+    const option = document.createElement('option');
+    option.value = artifactId;
+    option.textContent = artifact?.label || artifactId;
+    stateSelect.append(option);
+  });
+
+  const selectedLabel = panel.querySelector('[data-layout-selected]');
+  const output = panel.querySelector('[data-layout-output]');
+  const stateSlots = new Map();
+  let selectedItem = null;
+
+  function isEnabled() {
+    return layoutEditMode && narrowLayout.matches;
+  }
+
+  function getActiveStateId() {
+    return getFrontArtifactId() || DEFAULT_CASCADE_ID;
+  }
+
+  function getStateSnapshot() {
+    return {
+      order: [...cascadeOrder],
+      slots: getCurrentMobileCascadeSlots(),
+    };
+  }
+
+  function saveActiveState() {
+    if (!macWindow.classList.contains('is-expanded') || galleryState !== 'expanded') return;
+    stateSlots.set(getActiveStateId(), getStateSnapshot());
+  }
+
+  function applyActiveOverrides() {
+    const saved = stateSlots.get(getActiveStateId());
+    if (!saved) return;
+
+    saved.order.forEach((artifactId, index) => {
+      const slot = saved.slots[index];
+      const item = stage.querySelector(`[data-artifact-id="${artifactId}"]`);
+      if (!item || !slot) return;
+
+      item.style.setProperty('--mobile-expanded-x', `${slot.x}px`);
+      item.style.setProperty('--mobile-expanded-y', `${slot.y}px`);
+      item.style.setProperty('--mobile-expanded-rotate', `${slot.rotation}deg`);
+      item.style.setProperty('--mobile-expanded-scale', slot.scale);
+      item.style.setProperty('--mobile-expanded-z', `${slot.zIndex}`);
+    });
+  }
+
+  function formatExport() {
+    saveActiveState();
+    const entries = [...stateSlots.entries()];
+    const states = entries.length ? entries : [[getActiveStateId(), getStateSnapshot()]];
+
+    return [
+      '// Mobile-only dominant-state layout values',
+      '// Paste this back to Codex; desktop CASCADE_LAYOUTS should stay unchanged.',
+      'const MOBILE_LAYOUT_OVERRIDES = {',
+      states.map(([stateId, snapshot]) => {
+        const slots = snapshot.slots.map((slot, index) => (
+          `      // ${snapshot.order[index]}\n      { x: ${slot.x}, y: ${slot.y}, rotation: ${slot.rotation}, scale: ${slot.scale}, zIndex: ${slot.zIndex} },`
+        )).join('\n');
+
+        return `  '${stateId}': {\n    order: ${JSON.stringify(snapshot.order)},\n    slots: [\n${slots}\n    ],\n  },`;
+      }).join('\n'),
+      '};',
+    ].join('\n');
+  }
+
+  function updateOutput() {
+    output.value = formatExport();
+  }
+
+  function selectItem(item) {
+    stage.querySelectorAll('.artifact-item.is-layout-selected').forEach((candidate) => {
+      candidate.classList.remove('is-layout-selected');
+    });
+
+    selectedItem = item;
+    if (selectedItem) {
+      selectedItem.classList.add('is-layout-selected');
+      selectedLabel.textContent = `selected: ${selectedItem.dataset.artifactId}`;
+    } else {
+      selectedLabel.textContent = 'tap an icon to select it';
+    }
+  }
+
+  function setState(stateId) {
+    saveActiveState();
+    closeTabMenu();
+    if (!macWindow.classList.contains('is-expanded')) {
+      typingRun += 1;
+      resetGalleryState();
+      macWindow.classList.add('is-expanded');
+      expandButton.setAttribute('aria-expanded', 'true');
+      expandButton.setAttribute('aria-label', 'Portfolio gallery expanded');
+      introScreen.setAttribute('aria-hidden', 'true');
+    }
+
+    if (galleryState !== 'expanded') {
+      focusedArtifactId = null;
+      setGalleryState('expanded');
+    }
+
+    if (stateId === DEFAULT_CASCADE_ID) {
+      resetCascadeLayout();
+    } else {
+      rotateCascadeTo(stateId);
+    }
+
+    stateSelect.value = getActiveStateId();
+    applyActiveOverrides();
+    updateOutput();
+  }
+
+  function adjustSelected({ scaleDelta = 0, rotationDelta = 0 }) {
+    if (!selectedItem || !isEnabled()) return;
+
+    const currentScale = Number.parseFloat(selectedItem.style.getPropertyValue('--mobile-expanded-scale')) || 1;
+    const currentRotation = Number.parseFloat(selectedItem.style.getPropertyValue('--mobile-expanded-rotate')) || 0;
+    const nextScale = Math.max(0.24, Math.min(1.9, currentScale + scaleDelta));
+    const nextRotation = currentRotation + rotationDelta;
+
+    selectedItem.style.setProperty('--mobile-expanded-scale', Number(nextScale.toFixed(3)));
+    selectedItem.style.setProperty('--mobile-expanded-rotate', `${Number(nextRotation.toFixed(2))}deg`);
+    saveActiveState();
+    updateOutput();
+  }
+
+  function copyOutput() {
+    updateOutput();
+    output.select();
+    navigator.clipboard?.writeText(output.value).catch(() => {});
+  }
+
+  panel.addEventListener('click', (event) => {
+    event.stopPropagation();
+    const scaleButton = event.target.closest('[data-layout-scale]');
+    const rotateButton = event.target.closest('[data-layout-rotate]');
+
+    if (scaleButton) {
+      adjustSelected({ scaleDelta: Number.parseFloat(scaleButton.dataset.layoutScale) });
+      return;
+    }
+
+    if (rotateButton) {
+      adjustSelected({ rotationDelta: Number.parseFloat(rotateButton.dataset.layoutRotate) });
+      return;
+    }
+
+    if (event.target.closest('[data-layout-reset]')) {
+      stateSlots.delete(getActiveStateId());
+      applyCascadeOrder();
+      selectItem(null);
+      updateOutput();
+      return;
+    }
+
+    if (event.target.closest('[data-layout-copy]')) {
+      copyOutput();
+    }
+  });
+
+  stateSelect.addEventListener('change', () => {
+    setState(stateSelect.value);
+    selectItem(stage.querySelector(`[data-artifact-id="${getFrontArtifactId()}"]`));
+  });
+
+  narrowLayout.addEventListener('change', () => {
+    panel.classList.toggle('is-disabled', !isEnabled());
+  });
+
+  document.documentElement.dataset.layoutEdit = 'mobile';
+  panel.classList.toggle('is-disabled', !isEnabled());
+
+  return {
+    applyActiveOverrides,
+    handleStageClick(event) {
+      if (!isEnabled()) return false;
+      const item = event.target.closest('.artifact-item');
+      if (!item) return false;
+      event.preventDefault();
+      event.stopPropagation();
+      selectItem(item);
+      updateOutput();
+      return true;
+    },
+    handleDragStart(item) {
+      if (!isEnabled()) return false;
+      selectItem(item);
+      return true;
+    },
+    handleDragMove(item, drag, deltaX, deltaY) {
+      if (!isEnabled()) return false;
+      item.style.setProperty('--mobile-expanded-x', `${Math.round(drag.startMobileX + deltaX)}px`);
+      item.style.setProperty('--mobile-expanded-y', `${Math.round(drag.startMobileY + deltaY)}px`);
+      return true;
+    },
+    handleDragEnd(hasMoved) {
+      if (!isEnabled()) return false;
+      if (hasMoved) {
+        saveActiveState();
+        updateOutput();
+      }
+      return true;
+    },
+    init() {
+      setState(DEFAULT_CASCADE_ID);
+      selectItem(stage.querySelector(`[data-artifact-id="${DEFAULT_CASCADE_ID}"]`));
+      updateOutput();
+    },
+  };
 }
 
 function closeTabMenu() {
@@ -928,10 +1288,12 @@ function handlePointerMove(event) {
 
     if (dragState.hasMoved) {
       event.preventDefault();
-      dragState.item.style.setProperty('--expanded-x', `${Math.round(dragState.startX + deltaX)}px`);
-      dragState.item.style.setProperty('--expanded-y', `${Math.round(dragState.startY + deltaY)}px`);
-      dragState.item.style.setProperty('--mobile-expanded-x', `${Math.round(dragState.startMobileX + deltaX)}px`);
-      dragState.item.style.setProperty('--mobile-expanded-y', `${Math.round(dragState.startMobileY + deltaY)}px`);
+      if (!layoutEditor?.handleDragMove(dragState.item, dragState, deltaX, deltaY)) {
+        dragState.item.style.setProperty('--expanded-x', `${Math.round(dragState.startX + deltaX)}px`);
+        dragState.item.style.setProperty('--expanded-y', `${Math.round(dragState.startY + deltaY)}px`);
+        dragState.item.style.setProperty('--mobile-expanded-x', `${Math.round(dragState.startMobileX + deltaX)}px`);
+        dragState.item.style.setProperty('--mobile-expanded-y', `${Math.round(dragState.startMobileY + deltaY)}px`);
+      }
     }
 
     return;
@@ -961,6 +1323,7 @@ function handleArtifactPointerDown(event) {
 
   const item = event.target.closest('.artifact-item');
   if (!item) return;
+  const isLayoutEditDrag = layoutEditor?.handleDragStart(item);
   const isTouchDrag = event.pointerType !== 'mouse' || touchLayout.matches;
 
   dragState = {
@@ -972,7 +1335,7 @@ function handleArtifactPointerDown(event) {
     startY: Number.parseFloat(item.style.getPropertyValue('--expanded-y')) || 0,
     startMobileX: Number.parseFloat(item.style.getPropertyValue('--mobile-expanded-x')) || 0,
     startMobileY: Number.parseFloat(item.style.getPropertyValue('--mobile-expanded-y')) || 0,
-    threshold: isTouchDrag ? 3 : (NO_FOCUS_IDS.has(item.dataset.artifactId) ? 18 : 4),
+    threshold: isLayoutEditDrag ? 1 : (isTouchDrag ? 3 : (NO_FOCUS_IDS.has(item.dataset.artifactId) ? 18 : 4)),
     hasMoved: false,
   };
 
@@ -985,6 +1348,7 @@ function finishArtifactDrag(event) {
   const { item, hasMoved } = dragState;
   item.releasePointerCapture?.(event.pointerId);
   item.classList.remove('is-dragging');
+  layoutEditor?.handleDragEnd(hasMoved);
   dragState = null;
 
   if (hasMoved) {
@@ -1072,6 +1436,8 @@ function bindGalleryEvents() {
       suppressNextArtifactClick = false;
       return;
     }
+
+    if (layoutEditor?.handleStageClick(event)) return;
 
     const item = event.target.closest('.artifact-item');
     const artifactId = item?.dataset.artifactId;
@@ -1340,6 +1706,10 @@ macWindow.addEventListener('transitionend', (event) => {
 renderArtifacts();
 bindGalleryEvents();
 resetGalleryState();
+if (layoutEditMode) {
+  layoutEditor = createMobileLayoutEditor();
+  layoutEditor.init();
+}
 updateScrollProgress();
 updateBrowserNavButtons();
 startIntroTyping();
